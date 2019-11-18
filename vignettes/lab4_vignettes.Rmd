@@ -1,14 +1,9 @@
 ---
 title: "Lineae Regression"
 output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{rlab4}
+  %\VignetteIndexEntry{Vignette lab4}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
-  \usepackage[utf8]{inputenc}
-  tools::vignetteEngine("knitr", weave = vweave, tangle = vtangle,
-                      pattern = "[.]Rmd$", package = "knitr")
 ---
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -17,13 +12,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(knitr)
-rlab4::linreg
-library(ggplot2)
-library(magick)
-library(png)
-library(methods)
+```{r}
+require("lab4");
+require("ggplot2");
+linreg<-linreg$new(formula=Petal.Length ~ Species,data=iris)
 ```
 
 

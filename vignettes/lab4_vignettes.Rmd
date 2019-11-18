@@ -1,5 +1,7 @@
 ---
 title: "Linear Regression"
+author: "Nastaran Meftahi"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
   %\VignetteIndexEntry{Vignette lab4}
   %\VignetteEngine{knitr::rmarkdown}

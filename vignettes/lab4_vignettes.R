@@ -1,6 +1,8 @@
 ## ---- include = FALSE----------------------------------------------------
 require("lab4");
 require("ggplot2");
+require("png");
+require("magick")
 linreg<-linreg$new(formula=Petal.Length ~ Species,data=iris)
 linreg$print()
 
@@ -96,7 +98,7 @@ linreg <- setRefClass(Class = "linreg",
                                                             colour = "white"),   # Minor grid lines
                             axis.line = element_line(colour = "black")
                           )
-                          liu_logo <- image_read_svg("https://upload.wikimedia.org/wikipedia/commons/5/57/Linkoping_University_Logo.svg")
+                          #liu_logo <- image_read_svg("https://upload.wikimedia.org/wikipedia/commons/5/57/Linkoping_University_Logo.svg")
                           dat1 <- data.frame(y_hat, u_hat)
                           pl1<-ggplot(dat1, aes(y_hat, u_hat))+
                             geom_point()+

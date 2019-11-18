@@ -7,14 +7,9 @@ knitr::opts_chunk$set(
 ```{r}
 require("lab4");
 require("ggplot2");
-require("magick");
 linreg<-linreg$new(formula=Petal.Length ~ Species,data=iris)
 linreg$print()
 ```
-## ----setup---------------------------------------------------------------
-library(knitr)
-library(png)
-library(methods)
 
 ## ----echo=FALSE----------------------------------------------------------
 linreg <- setRefClass(Class = "linreg",

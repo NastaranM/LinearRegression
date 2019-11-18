@@ -1,5 +1,5 @@
 ---
-title: "Lineae Regression"
+title: "Linear Regression"
 output: rmarkdown::html_vignette
   %\VignetteIndexEntry{Vignette lab4}
   %\VignetteEngine{knitr::rmarkdown}

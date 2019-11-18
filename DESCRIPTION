@@ -1,0 +1,14 @@
+Package: nasme
+Type: Package
+Title: Linear regression
+Version: 0.1.0
+Author: Nastaran Meftahi
+Maintainer: Nastaran Meftahi <nasme581@ad.liu.se>
+Description:Linear regression
+    OLS
+License: GPL (>=3)
+Encoding: UTF-8
+LazyData: true
+Imports:ggplot2, dplyr, magrittr
+Suggests:testthat,knitr,rmarkdown, caret,mlbench, nycflights13, MASS,leaps,magrittr
+VignetteBuilder:knitr

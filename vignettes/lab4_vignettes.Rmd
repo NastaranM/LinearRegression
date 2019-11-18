@@ -1,22 +1,43 @@
-## ---- include = FALSE----------------------------------------------------
+---
+title: "Lineae Regression"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rlab4}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+  \usepackage[utf8]{inputenc}
+  tools::vignetteEngine("knitr", weave = vweave, tangle = vtangle,
+                      pattern = "[.]Rmd$", package = "knitr")
+---
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-##-------------------------------------------------------------------------
-```{r}
-require("lab4");
-require("ggplot2");
-require("magick");
-linreg<-linreg$new(formula=Petal.Length ~ Species,data=iris)
-linreg$print()
 ```
-## ----setup---------------------------------------------------------------
+
+```{r setup}
 library(knitr)
+rlab4::linreg
+library(ggplot2)
+library(magick)
 library(png)
 library(methods)
+```
 
-## ----echo=FALSE----------------------------------------------------------
+
+# Linear regression
+This package executes a simple linear regression calculations. The functions include:
+  * coef(): finds the regression coefficients
+  * print(): prints a brief summary of the data
+  * plot(): plots the fitted values and residuals
+  * summary(): provides a full summary statistics of the data
+  * resid(): finds the residuals of estimates
+  * pred(): find the prediction of the data based on estimated coefficients.
+  
+
+```{r echo=FALSE}
 linreg <- setRefClass(Class = "linreg",
                       
                       fields  = list(
@@ -158,16 +179,31 @@ tabl<-function(result){
   print(result)
 }
 
+```
 
-## ----echo=FALSE----------------------------------------------------------
+The functions that can be implemented by this class are as follows:
+** coef()
+** print()
+** plot()
+** resid()
+** pred()
+** summary()
+
+
+# Functions
+## coef()
+```{r echo=FALSE}
 coef = function(){
   coef<- as.vector(beta_hat)
   names(coef) <- rownames(beta_hat)
   return(beta_hat)
   }
 
+```
+This function calculates and prints out the estimates of coefficients
 
-## ----echo=FALSE----------------------------------------------------------
+## print()
+```{r echo=FALSE}
 print = function(){
                           coef <- numeric()
                           cat("Call:\nlinreg(formula = ",
@@ -190,8 +226,12 @@ print = function(){
                           #print.default(format(coef()), print.gap = 2L,quote = FALSE)
                           #cat("\n")
                         }
+```
 
-## ----echo = FALSE--------------------------------------------------------
+The print() function prints out the formulation of the regression equation as well as a brief summary of the data and estimations.
+
+## plot()
+```{r echo = FALSE}
 plot = function(){
                           #The required packages for plotting and setting up the 
                           #background image
@@ -231,17 +271,29 @@ plot = function(){
                          
                           return(list(pl1,pl2))
                         }
+```
 
-## ----echo=FALSE----------------------------------------------------------
+The plot function creates two plots. The plot of residuls vs. fitted values as well as the standardized residuals vs fitted values.
+
+## resid()
+```{r echo=FALSE}
 resid = function(){
                           return(u_hat)
 }
+```
 
-## ----echo=FALSE----------------------------------------------------------
+The resid() function prints out the residuals of estimates.
+
+## pred()
+```{r echo=FALSE}
 pred = function(){ return(y_hat)
   }
+```
 
-## ----echo=FALSE----------------------------------------------------------
+The pred() function provides the predictions for the variable under analysis.
+
+## summary()
+```{r echo=FALSE}
 summary = function(){
                           cat("linreg(formula = ", format(formula), ", data = ", par, ") :\n\n ", sep = "")
                           #result<- setNames(object = data.frame(cbind(beta_hat,sqrt(diag(variance.beta)),t_value,round(p_value,2),significance(p_value))),
@@ -261,10 +313,18 @@ significance <- function(p_value) {
 tabl<-function(result){
   print(result)
 }
+```
 
-## ------------------------------------------------------------------------
 
-#func<-linreg$new(Petal.Length~Sepal.Width+Sepal.Length, data = iris)
-#func$beta_hat
-#func$coef()
+The summary() function provides the summary statistics of the data, the p-values and their significance level.
+
+# Tests
+We used the data from Iris to create a test suit for our class.
+
+In the following the format that the inputs should be handled is shown.
+```{r}
+func<-linreg$new(Petal.Length~Sepal.Width+Sepal.Length, data = iris)
+func$beta_hat
+func$coef()
+```
 

@@ -1,15 +1,8 @@
 ## ---- include = FALSE----------------------------------------------------
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-##-------------------------------------------------------------------------
-```{r}
 require("lab4");
 require("ggplot2");
 linreg<-linreg$new(formula=Petal.Length ~ Species,data=iris)
 linreg$print()
-```
 
 ## ----echo=FALSE----------------------------------------------------------
 linreg <- setRefClass(Class = "linreg",
